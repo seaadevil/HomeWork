@@ -25,14 +25,14 @@ public class ReflectionTest {
             System.out.println(getAllModifiers(modifiers));
         }
 
-        Constructor constructor = buildingClass.getConstructor(String.class, String.class);
+        Constructor constructor = buildingClass.getConstructor(String.class, String.class, String.class);
         Object o = constructor.newInstance("age", "area", "type");
         System.out.println(o);
         if (o instanceof Building) {
             Building buildingTmp = (Building) o;
             System.out.println("getAreaOfBuilding --> " + buildingTmp.getAreaOfBuilding());
 
-            invokePrivateUserMethod(buildingClass, buildingTmp);
+            invokePrivateBuildingMethod(buildingClass, buildingTmp);
 
         }
         System.out.println("->methods<-");
@@ -43,10 +43,10 @@ public class ReflectionTest {
         }
     }
 
-    private static void invokePrivateUserMethod(Class buildingClass, Building buildingTmp) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method privateMethod = buildingClass.getDeclaredMethod("privateMethod");
-        privateMethod.setAccessible(true);
-        privateMethod.invoke(buildingTmp, null);
+    private static void invokePrivateBuildingMethod(Class buildingClass, Building buildingTmp) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method privategetTypeOfBuilding = buildingClass.getDeclaredMethod("privatgetTypeOfBuilding");
+        privategetTypeOfBuilding.setAccessible(true);
+        privategetTypeOfBuilding.invoke(buildingTmp, null);
     }
 
     private static String getAllModifiers(int modifier) {
