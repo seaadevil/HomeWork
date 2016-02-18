@@ -14,6 +14,12 @@ public class Building {
         System.out.println("Введите имя здания");
     }
 
+    public Building(String age, String area, String type) {
+        this.age = age;
+        this.area = area;
+        this.type = type;
+    }
+
     public Building(Double width, String type, Double height, String area, String age) {
         this.width = width;
         this.type = type;
@@ -21,6 +27,8 @@ public class Building {
         this.area = area;
         this.age = age;
     }
+
+
 
     public void checkAgeOfBuilding() {
         int ageParse = Integer.parseInt(age);
@@ -31,7 +39,7 @@ public class Building {
         }
     }
 
-    private  String getAreaOfBuilding() {
+    public   String getAreaOfBuilding() {
         return (" Место нахождения здания " + area);
     }
 
